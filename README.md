@@ -1,1 +1,1 @@
-# GourmetRestaurant ASP.NET Core Razor Pages Demo Web App
+ASP.NET Core Razor Pages Demo Web App
