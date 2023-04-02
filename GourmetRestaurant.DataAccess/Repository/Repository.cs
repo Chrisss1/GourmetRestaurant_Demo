@@ -19,19 +19,31 @@ namespace GourmetRestaurant.DataAccess.Repository
         public Repository(ApplicationDbContext db)
         {
             _db = db;
+			//FoodType,Category => if we use only applicationdbcontext
+			//_db.MenuItem.Include(u => u.FoodType).Include(u => u.Category);
 			this.dbSet = db.Set<T>();
         }
         public void Add(T entity)
 		{
 			dbSet.Add(entity);
 		}
-
-		public IEnumerable<T> GetAll()
+		//loading props from API
+		public IEnumerable<T> GetAll(string? includeProperties = null)
 		{
 			IQueryable<T> query = dbSet;
+			if(includeProperties != null)
+			{
+				//abc,,xyz -> abc xyz
+				foreach (var includeProperty in includeProperties.Split(
+					new char[] {','},StringSplitOptions.RemoveEmptyEntries))
+				{
+					query = query.Include(includeProperty);
+				}
+			}
+
 			return query.ToList();
 		}
-
+		//search the id for delete or update methods.
 		public T GetFirstOrDefault(Expression<Func<T, bool>>? filter = null)
 		{
 			IQueryable<T> query = dbSet;

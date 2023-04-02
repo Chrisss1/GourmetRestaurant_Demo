@@ -1,7 +1,5 @@
 ﻿@page
 @model GourmetRestaurantWeb.Pages.Admin.FoodTypes.DeleteModel
-@{
-}
 
 <form method="post">
 	@*we need to edit the category*@
@@ -17,13 +15,13 @@
 			<label asp-for="FoodType.Name"></label>
 			<input asp-for="FoodType.Name" disabled class="form-control" />
 		</div>
-		</div>
 		<button type="submit" class="btn btn-danger" style="width:150px;">Delete</button>
 		<a asp-page="Index" class="btn btn-secondary" style="width:150px">Back To List</a>
 	</div>
 </form>
 
-@section Scripts {
+@section Scripts
+{
 	@{
 		//custom side validations, we can also add js scripts
 		<partial name="_ValidationScriptsPartial"></partial>

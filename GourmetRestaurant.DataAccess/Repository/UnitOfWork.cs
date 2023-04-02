@@ -1,5 +1,6 @@
 ﻿using GourmetRestaurant.DataAccess.Data;
 using GourmetRestaurant.DataAccess.Repository.IRepository;
+using GourmetRestaurant.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,9 +18,11 @@ namespace GourmetRestaurant.DataAccess.Repository
             _db = db;
 			Category = new CategoryRepository(_db);
 			FoodType = new FoodTypeRepository(_db);
+			MenuItem = new MenuItemRepository(_db);
 		}
-        public ICategoryRepository Category {get;private set;}
+        public ICategoryRepository Category { get;private set;}
 		public IFoodTypeRepository FoodType { get;private set;}
+		public IMenuItemRepository MenuItem { get;private set;}
 
 		public void Dispose()
 		{

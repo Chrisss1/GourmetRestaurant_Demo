@@ -5,11 +5,11 @@ VisualStudioVersion = 17.5.33414.496
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GourmetRestaurantWeb", "GourmetRestaurantWeb\GourmetRestaurantWeb.csproj", "{9E863A80-EE18-47FE-A5B3-723AE005740E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GourmetRestaurant.Models", "GourmetRestaurant.Models\GourmetRestaurant.Models.csproj", "{38E4F080-780C-4744-8771-44E63AE84BB2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GourmetRestaurant.Models", "GourmetRestaurant.Models\GourmetRestaurant.Models.csproj", "{38E4F080-780C-4744-8771-44E63AE84BB2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GourmetRestaurant.DataAccess", "GourmetRestaurant.DataAccess\GourmetRestaurant.DataAccess.csproj", "{4D0E6673-1BB9-4A5D-AD5B-693C899F6161}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GourmetRestaurant.DataAccess", "GourmetRestaurant.DataAccess\GourmetRestaurant.DataAccess.csproj", "{4D0E6673-1BB9-4A5D-AD5B-693C899F6161}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GourmetRestaurant.Utility", "GourmetRestaurant.Utility\GourmetRestaurant.Utility.csproj", "{2C407798-2290-4108-B526-DE0A82F32D25}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GourmetRestaurant.Utility", "GourmetRestaurant.Utility\GourmetRestaurant.Utility.csproj", "{2C407798-2290-4108-B526-DE0A82F32D25}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

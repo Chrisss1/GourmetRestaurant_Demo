@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
@@ -18,9 +19,11 @@ namespace GourmetRestaurant.Models
         public string Image { get; set; }
 		[Range(1, 1000, ErrorMessage = "Price Should Be Between $1 and $1000")]
 		public double Price { get; set; }
+		[DisplayName("Food Type")]
         public int FoodTypeId { get; set; }
 		[ForeignKey("FoodTypeId")]
 		public FoodType FoodType { get; set; }
+		[DisplayName("Category")]
 		public int CategoryId { get; set; }
 		//needless to use ForeignKey attribute
 		public Category Category { get; set; }
