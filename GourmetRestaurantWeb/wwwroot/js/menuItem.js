@@ -16,7 +16,7 @@ dataTable = new DataTable('#DT_Load', {
                 return `<div class="w-100 btn-group">
                         <a href="/Admin/MenuItems/upsert?id=${data}" class="btn btn-success text-white mx-2 py-2">
                         <i class="bi bi-pencil-square"></i> </a>
-                        <a onClick="Delete"('/api/MenuItem/'+${data})  class="btn btn-danger text-white mx-2 py-2">
+                        <a onClick=Delete('/api/MenuItem/'+${data})  class="btn btn-danger text-white mx-2 py-2">
                         <i class="bi bi-trash-fill"></i> </a>
                         </div>`
             },
