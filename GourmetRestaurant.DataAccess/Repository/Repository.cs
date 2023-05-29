@@ -19,8 +19,10 @@ namespace GourmetRestaurant.DataAccess.Repository
         public Repository(ApplicationDbContext db)
         {
             _db = db;
-			//FoodType,Category => if we use only applicationdbcontext
-			//_db.MenuItem.Include(u => u.FoodType).Include(u => u.Category);
+			//FoodType,Category => if we use only applicationdbcontext directly
+
+			//_db.ShoppingCart.Include(u => u.MenuItem).ThenInclude(u => u.Category);
+			//_db.MenuItem.OrderBy(u => u.Name);
 			this.dbSet = db.Set<T>();
         }
         public void Add(T entity)
@@ -28,10 +30,16 @@ namespace GourmetRestaurant.DataAccess.Repository
 			dbSet.Add(entity);
 		}
 		//loading props from API
-		public IEnumerable<T> GetAll(string? includeProperties = null)
+		public IEnumerable<T> GetAll(Expression<Func<T, bool>>? filter = null,
+			Func<IQueryable<T>, IOrderedQueryable<T>>? orderby = null, string? includeProperties = null)
 		{
 			IQueryable<T> query = dbSet;
-			if(includeProperties != null)
+			if (filter != null)
+			{
+				query = query.Where(filter);
+			}
+
+			if (includeProperties != null)
 			{
 				//abc,,xyz -> abc xyz
 				foreach (var includeProperty in includeProperties.Split(
@@ -41,15 +49,29 @@ namespace GourmetRestaurant.DataAccess.Repository
 				}
 			}
 
+			if(orderby != null)
+			{
+				return orderby(query).ToList();
+			}
 			return query.ToList();
 		}
 		//search the id for delete or update methods.
-		public T GetFirstOrDefault(Expression<Func<T, bool>>? filter = null)
+		public T GetFirstOrDefault(Expression<Func<T, bool>>? filter = null, string? includeProperties = null)
 		{
 			IQueryable<T> query = dbSet;
 			if(filter != null)
 			{
 				query = query.Where(filter);
+			}
+
+			if (includeProperties != null)
+			{
+				//abc,,xyz -> abc xyz
+				foreach (var includeProperty in includeProperties.Split(
+					new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries))
+				{
+					query = query.Include(includeProperty);
+				}
 			}
 			return query.FirstOrDefault();
 		}
